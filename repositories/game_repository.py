@@ -41,3 +41,5 @@ def players(game):
     results = run_sql(sql, values)
     for row in results:
         player = Player(row['name'], row['id'])
+        players.append(player)
+    return players
