@@ -6,7 +6,8 @@ def save(game):
     sql = "INSERT INTO games(date) VALUES (%s) RETURNING id"
     values = [game.date]
     results = run_sql( sql, values )
-    game.id = results[0][id]
+    id = results[0]['id']
+    game = id
     return game
 
 def select_all():

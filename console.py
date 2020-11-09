@@ -10,9 +10,9 @@ import repositories.tournament_repository as tournament_repository
 
 # Every time console starts, all entries, that were saved, are deleted
 
-tournament_repository.delete.all()
-player_repository.delete.all()
-game_repository.delete.all()
+tournament_repository.delete_all()
+player_repository.delete_all()
+game_repository.delete_all()
 
 # starts adding entries
 player1 = Player('Charo')
