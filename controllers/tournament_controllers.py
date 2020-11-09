@@ -24,17 +24,13 @@ def new_game():
 #CREATE
 @tournaments_blueprint.route("/tournaments", methods=['POST'])
 def create_game():
-    player1_id = request.form['player_id']
-    player2_id = request.form['player_id']
     game_id = request.form['game_id']
     winner = request.form['winner']
     loser = request.form['loser']
     # I need to think on this one, still
     # winner = request.form['winner']
-    player1 = player_repository.select(player1_id)
-    player2 = player_repository.select(player2_id)
     game = game_repository.select(game_id)
-    tournament = Tournament(player1, player2, game, winner, loser)
+    tournament = Tournament(game, winner, loser)
     tournament_repository.save(tournament)
     return redirect('/tournament')
 
