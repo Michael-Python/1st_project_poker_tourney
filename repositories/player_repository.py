@@ -20,7 +20,7 @@ def select_all():
 
 def select(id):
     player = None
-    sql = "SELECT * FROM player WHERE id = %s"
+    sql = "SELECT * FROM players WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
@@ -29,7 +29,7 @@ def select(id):
     return player
 
 def delete_all():
-    sql = "DELETE FROM player"
+    sql = "DELETE FROM players"
     run_sql(sql)
 
 def games(player):

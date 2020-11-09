@@ -3,12 +3,13 @@ from models.player import Player
 from models.game import Game
 
 def save(game):
-    sql = "INSERT INTO games(date) VALUES (%s) RETURNING id"
-    values = [game.date]
+    sql = "INSERT INTO games(number) VALUES (%s) RETURNING id"
+    values = [game.number]
     results = run_sql( sql, values )
+    # ensure all names are aligned across the code, maybe dropdb and createdb to debug
     id = results[0]['id']
-    game = id
-    return game
+    game.id = id
+    # return game
 
 def select_all():
     games = []
@@ -17,7 +18,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        game = Game(row['date'], row['id'])
+        game = Game(row['number'], row['id'])
         games.append(game)
     return games
 
@@ -28,7 +29,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        game = Game(result['date'], result['id'])
+        game = Game(result['number'], result['id'])
     return result
 
 def delete_all():

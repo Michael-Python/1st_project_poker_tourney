@@ -1,4 +1,4 @@
 class Game:
-    def __init__(self, id, date):
+    def __init__(self, number, id = None):
+        self.number = number
         self.id = id
-        self.date = date

@@ -15,6 +15,12 @@ player_repository.delete_all()
 game_repository.delete_all()
 
 # starts adding entries
+game1 = Game(1)
+game_repository.save(game1)
+
+game2 = Game(2)
+game_repository.save(game2)
+
 player1 = Player('Charo')
 player_repository.save(player1)
 
@@ -23,12 +29,6 @@ player_repository.save(player2)
 
 player3 = Player('Joe')
 player_repository.save(player3)
-
-game1 = Game('8.10.2020')
-game_repository.save(game1)
-
-game2 = Game('15.10.2020')
-game_repository.save(game2)
 
 tournament1 = Tournament(player1, game1)
 tournament_repository.save(tournament1)
