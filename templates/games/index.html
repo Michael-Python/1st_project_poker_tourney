@@ -8,16 +8,23 @@
     <table>
         <tr>
             <th>
-                <h3>Click on a game to get more info.</h3>
+                <h3>Click on a game to get more info or click the bin to delete a game.</h3>
             </th>
             
         </tr>
-        { % for game in games % }
+        {% for game in games %}
         <tr>
             <td>
-                <a href="/games">Game {{game.player1.name}}</a>
+                <div class = "game_id">
+                    <a href="/games/{{game.id}}">Game {{game.number}}</a>
+                </div>
+                <div class = "buttons">
+                    <form action="/games.{{game.id}}/delete" method=@POST>
+                        <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
+                    </form>
+                </div>
             </td>
         </tr>
-        { % endfor % }
+        {% endfor %}
     </table>
 {% endblock %}<h1></h1>

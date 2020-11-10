@@ -1,9 +1,11 @@
 from db.run_sql import run_sql
 from models.player import Player
 from models.game import Game
+from models.tournament import Tournament
 
 import repositories.game_repository as game_repository
 import repositories.player_repository as player_repository
+
 
 #create
 def save(tournament):
@@ -22,8 +24,8 @@ def select_all():
     
     for row in results:
         game = game_repository.select(row['game_id'])
-        winner = player_repository.select(row['game_winner'])
-        loser = player_repository.select(row['game_loser'])
+        winner = player_repository.select(row['winner'])
+        loser = player_repository.select(row['loser'])
         tournament = Tournament(game, winner, loser, row['id'])
         tournaments.append(tournament)
     return tournaments

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 from models.game import Game
+from models.player import Player
 import repositories.game_repository as game_repository 
 import repositories.player_repository as player_repository
 
@@ -42,7 +43,7 @@ def add_player():
     game_repository.save(game)
     return redirect('/games')
 
-# delete a player
+# delete a game
 @games_blueprint.route("/games/<id>/delete", methods=['POST'])
 def delete_game(id):
     game_repository.delete(id)

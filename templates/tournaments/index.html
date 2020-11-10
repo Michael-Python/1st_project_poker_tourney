@@ -2,6 +2,38 @@
 
 {% block content %}
     <h1>Joe's Poker Tournament</h1>
+    <h3>See the list of games and results.</h3>
+    {% for tournament in tournaments %}
+            <p>Game {{tournament.id}}</a> Winner {{tournament.winner.name}} Loser {{tournament.loser.name}}</p>
+    {% endfor %}
+    <h3>Add game results:</h3>
+    {% for game in games %}
+        
+            <h3>Game {{game.number}}</h3>
+            <ul><li>Player1: {{game.player1}}</li>
+            <li>Player2: {{game.player2}}</li>
+        
+    {% endfor %}    
+    <form action="/tournaments" method="post">
+        {% for game in games %}
+            {% if tournament.winner == False %}
+                <h3>Game {{game.number}}</h3>
+                <ul>
+                    <li>Player1: {{game.player1}}</li>
+                    <li>Player2: {{game.player2}}</li>
+                </ul>
+                <div>
+                    <label for="winner">Winning Player:</label>
+                    <input type="text" id="winner" name="winner" placeholder="Enter the winner, here" required autofocus>
+                </div>
+                    
+                <div>
+                    <label for="loser">Losing Player:</label>
+                    <input type="text" id="loser" name="loser" placeholder="Enter the loser, here" required autofocus>
+                </div>
+            {% endif %}
+            
+        {% endfor %}
+        
+    {% endblock content %}
 
-    <h3>See the list of games and results, update as needed.</h3>
-{% endblock content %}<h1></h1>

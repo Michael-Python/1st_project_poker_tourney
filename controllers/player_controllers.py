@@ -8,14 +8,14 @@ players_blueprint = Blueprint("players", __name__)
 @players_blueprint.route("/players")
 def players():
     players = player_repository.select_all()
-    return render_template("players/index.html", players = players)
+    return render_template("players/index.html", players=players)
 
 # makes a specific directory for specific players
 @players_blueprint.route("/players/<id>")
 def show(id):
     player = player_repository.select(id)
-    games = player_repository.players(player)
-    return render_template("players/show.html", player = players, games = games)
+    games = player_repository.games(player)
+    return render_template("players/show.html", player=players, games=games)
 
 # NEW 
 # GET players/new
@@ -27,7 +27,7 @@ def new_player():
 # add a player
 # CREATE
 # POST 'players'
-@players_blueprint.route("/players/", methods=['POST'])
+@players_blueprint.route("/players", methods=['POST'])
 def add_player():
     new_player = request.form['new_player']
     name = player_repository.select(new_player)

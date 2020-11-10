@@ -19,6 +19,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
+        # this gives player 1 and 2  a value from the player file
         player1 = player_repository.select(row['player1'])
         player2 = player_repository.select(row['player2'])
         game = Game(row['number'], player1, player2, row['id'])
@@ -30,9 +31,11 @@ def select(id):
     sql = "SELECT * FROM games where id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-
+    print(result[0])
     if result is not None:
-        game = Game(result['number'], result['player1'], result['player2'], result['id'])
+        player1 = player_repository.select(result['player1'])
+        player2 = player_repository.select(result['player2'])
+        game = Game(result['number'], player1, player2, result['id'])
     return result
 
 def delete_all():

@@ -33,7 +33,7 @@ game_repository.save(game2)
 tournament1 = Tournament(game1, player1, player2)
 tournament_repository.save(tournament1)
 
-tournament2 = Tournament(game2, player1, player2)
+tournament2 = Tournament(game2, player3, player1)
 tournament_repository.save(tournament2)
 
 pdb.set_trace()

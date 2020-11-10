@@ -2,6 +2,26 @@
 
 {% block content %}
     <h1>Players</h1>
-
-    <h3>Click on a player to get more info.</h3>
-{% endblock content %}<h1></h1>
+    
+        <table>
+            <tr>
+                <th>
+                    <h3>Click on a player to get more info or click the bin to delete a player.</h3>
+                </th>
+                
+            </tr>
+            {% for player in players %}
+            <tr>
+                <td><div class="player_id">
+                        <a href="/players/{{player.id}}">Player: {{player.name}}</a>
+                    </div>
+                    <div class = "buttons">
+                        <form action="/players.{{player.id}}/delete" method=@POST>
+                            <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}<h1></h1>

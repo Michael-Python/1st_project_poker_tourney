@@ -15,7 +15,7 @@ def select_all():
     sql = "SELECT * FROM players"
     results = run_sql(sql)
     for row in results:
-        player = (row['name'], row['id'])
+        player = Player(row['name'], row['id'])
         players.append(player)
     return players
 

@@ -11,7 +11,7 @@ tournaments_blueprint = Blueprint("tournaments", __name__)
 @tournaments_blueprint.route("/tournaments")
 def tournaments():
     tournaments = tournament_repository.select_all()
-    return render_template("tournaments/index.html", tournaments = tournaments)
+    return render_template("tournaments/index.html", tournaments=tournaments)
 
 #NEW
 # sets the place where games can be added
@@ -19,7 +19,7 @@ def tournaments():
 def new_game():
     players = player_repository.select_all()
     games = game_repository.select_all()
-    return render_template("tournaments/show", games = games, players = players)
+    return render_template("tournaments/show", games=games, players=players)
 
 #CREATE
 @tournaments_blueprint.route("/tournaments", methods=['POST'])
