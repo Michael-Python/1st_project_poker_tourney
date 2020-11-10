@@ -15,12 +15,6 @@ player_repository.delete_all()
 game_repository.delete_all()
 
 # starts adding entries
-game1 = Game(1)
-game_repository.save(game1)
-
-game2 = Game(2)
-game_repository.save(game2)
-
 player1 = Player('Charo')
 player_repository.save(player1)
 
@@ -30,10 +24,16 @@ player_repository.save(player2)
 player3 = Player('Joe')
 player_repository.save(player3)
 
-tournament1 = Tournament(player1, game1)
+game1 = Game(1, player1, player2)
+game_repository.save(game1)
+
+game2 = Game(2, player1, player3)
+game_repository.save(game2)
+
+tournament1 = Tournament(game1, player1, player2)
 tournament_repository.save(tournament1)
 
-tournament2 = Tournament(player3, game2)
+tournament2 = Tournament(game2, player1, player2)
 tournament_repository.save(tournament2)
 
 pdb.set_trace()

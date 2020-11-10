@@ -7,8 +7,8 @@ import repositories.player_repository as player_repository
 
 #create
 def save(tournament):
-    sql = "INSERT INTO tournaments ( player1_id, player2_id, game_id) VALUES (%s, %s) RETURNING id "
-    values = [tournament.player1_id, tournament.player2_id, tournament.game_id]
+    sql = "INSERT INTO tournaments ( game_id, winner, loser) VALUES (%s, %s, %s) RETURNING id "
+    values = [tournament.game.id, tournament.winner.id, tournament.loser.id]
     results = run_sql(sql, values)
     tournament.id = results[0]['id']
     return tournament
@@ -21,10 +21,10 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        player1 = player_repository.select(row['player1_id'])
-        player2 = player_repository.select(row['player2_id'])
         game = game_repository.select(row['game_id'])
-        tournament = Tournament(player1, player2, game, row['id'])
+        winner = player_repository.select(row['game_winner'])
+        loser = player_repository.select(row['game_loser'])
+        tournament = Tournament(game, winner, loser, row['id'])
         tournaments.append(tournament)
     return tournaments
 

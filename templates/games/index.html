@@ -3,5 +3,21 @@
 {% block content %}
     <h1>Game Numbers</h1>
 
-    <h3>Click on a game to get more info.</h3>
-{% endblock content %}<h1></h1>
+    
+
+    <table>
+        <tr>
+            <th>
+                <h3>Click on a game to get more info.</h3>
+            </th>
+            
+        </tr>
+        { % for game in games % }
+        <tr>
+            <td>
+                <a href="/games">Game {{game.player1.name}}</a>
+            </td>
+        </tr>
+        { % endfor % }
+    </table>
+{% endblock %}<h1></h1>

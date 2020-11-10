@@ -1,10 +1,11 @@
 from db.run_sql import run_sql
 from models.player import Player
 from models.game import Game
+import repositories.player_repository as player_repository
 
 def save(game):
-    sql = "INSERT INTO games(number) VALUES (%s) RETURNING id"
-    values = [game.number]
+    sql = "INSERT INTO games(number, player1, player2) VALUES (%s, %s, %s) RETURNING id"
+    values = [game.number, game.player1.id, game.player2.id]
     results = run_sql( sql, values )
     # ensure all names are aligned across the code, maybe dropdb and createdb to debug
     id = results[0]['id']
@@ -18,7 +19,9 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        game = Game(row['number'], row['id'])
+        player1 = player_repository.select(row['player1'])
+        player2 = player_repository.select(row['player2'])
+        game = Game(row['number'], player1, player2, row['id'])
         games.append(game)
     return games
 
@@ -29,7 +32,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        game = Game(result['number'], result['id'])
+        game = Game(result['number'], result['player1'], result['player2'], result['id'])
     return result
 
 def delete_all():
@@ -44,4 +47,8 @@ def players(game):
     for row in results:
         player = Player(row['name'], row['id'])
         players.append(player)
-    return players
+        
+def delete(id):
+    sql = "DELETE FROM games WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

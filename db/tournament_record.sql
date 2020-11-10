@@ -1,6 +1,6 @@
 DROP TABLE tournaments;
-DROP TABLE players;
 DROP TABLE games;
+DROP TABLE players;
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
@@ -9,14 +9,14 @@ CREATE TABLE players (
 
 CREATE TABLE games (
     id SERIAL PRIMARY KEY,
+    player1 INT REFERENCES players(id) ON DELETE CASCADE,
+    player2 INT REFERENCES players(id) ON DELETE CASCADE,
     number INT
 );
 
 CREATE TABLE tournaments (
     id SERIAL PRIMARY KEY,
-    player1_id INT REFERENCES players(id) ON DELETE CASCADE,
-    player2_id INT REFERENCES players(id) ON DELETE CASCADE,
     game_id INT REFERENCES games(id) ON DELETE CASCADE,
-    winner VARCHAR(255),
-    loser VARCHAR(255)
+    winner INT REFERENCES players(id) ON DELETE CASCADE,
+    loser INT REFERENCES players(id) ON DELETE CASCADE
 )

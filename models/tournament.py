@@ -1,6 +1,6 @@
 class Tournament:
-    def __init__(self, game_id, winner, loser, id = None):
-        self.game_id = game_id
+    def __init__(self, game, winner, loser, id = None):
+        self.game = game
         self.winner = winner
         self.loser = loser
         self.id = id

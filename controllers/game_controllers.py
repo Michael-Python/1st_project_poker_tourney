@@ -10,17 +10,17 @@ games_blueprint = Blueprint("games", __name__)
 @games_blueprint.route("/games")
 def games():
     games = game_repository.select_all()
-    return render_template("games/index.html", games = games)
+    return render_template("games/index.html", games=games)
 
 # makes a specific directory for specific games
 @games_blueprint.route("/games/<id>")
 def show(id):
     game = game_repository.select(id)
     players = game_repository.players(game)
-    return render_template("games/show.html", game=games, players=players)
+    return render_template("games/show.html", games=games, players=players)
 
 # NEW 
-# GET players/new
+# GET games/new
 @games_blueprint.route("/games/new", methods=['GET'])
 def new_game():
     players = player_repository.select_all()

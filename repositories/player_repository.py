@@ -6,7 +6,8 @@ def save(player):
     sql = "INSERT INTO players(name) VALUES (%s) RETURNING id"
     values = [player.name]
     results = run_sql(sql, values)
-    player.id = results[0]['id']
+    id = results[0]['id']
+    player.id = id
     return player
 
 def select_all():
@@ -32,12 +33,17 @@ def delete_all():
     sql = "DELETE FROM players"
     run_sql(sql)
 
+def delete(id):
+    sql = "DELETE FROM players WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 def games(player):
     games = []
     sql = "SELECT games.* FROM games INNER JOIN tournaments ON games.id = tournaments.game_id WHERE tournament.user_id = %s"
     values = [player.id]
     results = run_sql(sql, values)
     for row in results:
-        game = Game(row['date'], row['id'])
+        game = Game(row['number'], row['player1'], row['player2'], row['id'])
         games.append(game)
     return games
