@@ -1,15 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- <table>
+  <tr>
+      <th>
+          <h3>Click on update to enter results for the game.</h3>
+      </th>
+      
+  </tr>
+  {% for game in games %}
+  <tr>
+      <td>
+          <p>
+          <div class = "game_id">
+          {% for game in games %}    
+              Game {{game.number}} Player 1 {{game.player1}} Player 2 {{game.player2}}
+              
+          </div>
+          
+          <div class = "buttons">
+              <form action="/tournaments.{{tournament.id}}/delete" method=@POST>
+                  <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
+              </form>
+          </div>
+          {% endfor %}
+          </p>
+      </td>
+  </tr>
+  {% endfor %}
+  <tr>
+      <td>
+          <li><a href="/games/new">Add New Game</a>
+      </td>
+  </tr>
+</table> -->
 <form action="/tournaments" method="POST">
   <div>
     <label for="game_number">Game Number:</label>
-    <input type="text" id="game_number" name="game_number" placeholder="game_number" required autofocus>
+    <input type="text" id="game_number" name="Enter the game number" placeholder="game_number" required autofocus>
   </div>
 
   <div>
-    <label for="winner">Player 1:</label>
-    <select id="player1" name="player1">
+    <label for="winner">Select the winner's name:</label>
+    <select id="winner" name="winner">
       {% for game in games %}
         <option value="{{player.id}}">{{player.name}}</option>
       {% endfor %}
@@ -17,8 +50,8 @@
   </div>
 
   <div>
-    <label for="player2">Player 2:</label>
-    <select id="player2" name="player2">
+    <label for="loser">Select the loser's name:</label>
+    <select id="loser" name="loser">
       {% for player in players %}
         <option value="{{player.id}}">{{player.name}}</option>
       {% endfor %}

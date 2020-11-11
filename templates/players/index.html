@@ -12,7 +12,9 @@
             </tr>
             {% for player in players %}
             <tr>
-                <td><div class="player_id">
+                <td>
+                    <p>
+                    <div class="player_id">
                         <a href="/players/{{player.id}}">Player: {{player.name}}</a>
                     </div>
                     <div class = "buttons">
@@ -20,8 +22,15 @@
                             <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
                         </form>
                     </div>
+                    </p>
                 </td>
             </tr>
             {% endfor %}
+            <tr>
+                <td>
+                    <a href="/players/new">Add New Player</a>
+
+                </td>
+            </tr>
         </table>
 {% endblock %}<h1></h1>

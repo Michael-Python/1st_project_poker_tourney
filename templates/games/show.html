@@ -2,11 +2,11 @@
 
 {% block content %}
     
-<h1>Game {{game.number}}</h1>
+<h1>Players in Game {{game.number}}</h1>
 
 <ul>
-    <li>Player1: {{game.player1}}</li>
-    <li>Player2: {{game.player2}}</li>
+    <li>Player1: {{game.player1.name}}</li>
+    <li>Player2: {{game.player2.name}}</li>
 </ul>
 
 {% endblock content %}

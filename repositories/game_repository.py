@@ -34,7 +34,7 @@ def select(id):
     if result is not None:
         player1 = player_repository.select(result['player1'])
         player2 = player_repository.select(result['player2'])
-        game = Game(result['number'], player1.name, player2.name, result['id'])
+        game = Game(result['number'], player1, player2, result['id'])
     return game
 
 def delete_all():
@@ -49,6 +49,7 @@ def players(game):
     for row in results:
         player = Player(row['name'], row['id'])
         players.append(player)
+    return players
         
 def delete(id):
     sql = "DELETE FROM games WHERE id = %s"

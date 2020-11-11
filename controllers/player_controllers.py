@@ -15,7 +15,7 @@ def players():
 def show(id):
     player = player_repository.select(id)
     games = player_repository.games(player)
-    return render_template("players/show.html", player=players, games=games)
+    return render_template("players/show.html", player=player, games=games)
 
 # NEW 
 # GET players/new

@@ -14,25 +14,24 @@ def tournaments():
     return render_template("tournaments/index.html", tournaments=tournaments)
 
 #NEW
-# sets the place where games can be added
-@tournaments_blueprint.route("/tournaments/new", methods=['GET'])
-def new_game():
-    players = player_repository.select_all()
-    games = game_repository.select_all()
-    return render_template("tournaments/show", games=games, players=players)
+# # sets the place where games can be added
+# @tournaments_blueprint.route("/tournaments/new", methods=['GET'])
+# def update_tournament():
+#     games = game_repository.select_all()
+#     return render_template("tournaments/new.html", tournaments=tournaments)
 
 #CREATE
 @tournaments_blueprint.route("/tournaments", methods=['POST'])
 def create_game():
-    game_id = request.form['game_id']
-    winner = request.form['winner']
-    loser = request.form['loser']
-    # I need to think on this one, still
-    # winner = request.form['winner']
-    game = game_repository.select(game_id)
-    tournament = Tournament(game, winner, loser)
+    game_id_name = request.form['game_number']
+    winner_name = request.form['winner']
+    loser_name = request.form['loser']
+    game_id = game_repository.select(game_id_name)
+    winner = player_repository.select(winner_name)
+    loser = player_repository.select(loser_name)
+    tournament = Tournament(game_id, winner, loser)
     tournament_repository.save(tournament)
-    return redirect('/tournament')
+    return redirect('/tournaments')
 
 
 #DELETE

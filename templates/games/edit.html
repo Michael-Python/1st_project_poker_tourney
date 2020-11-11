@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/tournaments" method="POST">
+  <div>
+    Game Number {{game.number}}
+  </div>
+  <input type="hidden" name="game_number"value={{game.number}}>
+  <div>
+    
+    <label for="winner">The winner is: </label>
+    <select id="winner" name="winner">
+        <option value="{{game.player1.id}}">{{game.player1.name}}</option>
+        <option value="{{game.player2.id}}">{{game.player2.name}}</option>
+
+    </select>
+  </div>
+
+  <div>
+    <label for="loser">The loser is: </label>
+    <select id="loser" name="loser">
+      <option value="{{game.player1.id}}">{{game.player1.name}}</option>
+      <option value="{{game.player2.id}}">{{game.player2.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit">Add Game Results</button>
+
+</form>
+
+{% endblock %}
