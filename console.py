@@ -30,6 +30,9 @@ game_repository.save(game1)
 game2 = Game(2, player1, player3)
 game_repository.save(game2)
 
+game3 = Game(3, player3, player2)
+game_repository.save(game3)
+
 tournament1 = Tournament(game1, player1, player2)
 tournament_repository.save(tournament1)
 

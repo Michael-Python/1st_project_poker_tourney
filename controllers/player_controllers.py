@@ -22,7 +22,7 @@ def show(id):
 @players_blueprint.route("/players/new", methods=['GET'])
 def new_player():
     players = player_repository.select_all()
-    return render_template("players/new.html", all_players = players)
+    return render_template("players/new.html", players=players)
 
 # add a player
 # CREATE
@@ -30,8 +30,9 @@ def new_player():
 @players_blueprint.route("/players", methods=['POST'])
 def add_player():
     new_player = request.form['new_player']
-    name = player_repository.select(new_player)
-    player = Player(name)
+    # name = player_repository.select(new_player)
+
+    player = Player(new_player)
     player_repository.save(player)
     return redirect('/players')
 
@@ -40,3 +41,5 @@ def add_player():
 def delete_player(id):
     player_repository.delete(id)
     return redirect('/players')
+
+

@@ -16,7 +16,7 @@
                         <a href="/players/{{player.id}}">Player: {{player.name}}</a>
                     </div>
                     <div class = "buttons">
-                        <form action="/players.{{player.id}}/delete" method=@POST>
+                        <form action="/players/{{player.id}}/delete" method='POST'>
                             <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
                         </form>
                     </div>

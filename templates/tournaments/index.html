@@ -14,7 +14,7 @@
             <li>Player2: {{game.player2}}</li>
         
     {% endfor %}    
-    <form action="/tournaments" method="post">
+    <!-- <form action="/tournaments" method="post">
         {% for game in games %}
             {% if tournament.winner == False %}
                 <h3>Game {{game.number}}</h3>
@@ -26,14 +26,14 @@
                     <label for="winner">Winning Player:</label>
                     <input type="text" id="winner" name="winner" placeholder="Enter the winner, here" required autofocus>
                 </div>
-                    
+        
                 <div>
                     <label for="loser">Losing Player:</label>
                     <input type="text" id="loser" name="loser" placeholder="Enter the loser, here" required autofocus>
                 </div>
             {% endif %}
             
-        {% endfor %}
+        {% endfor %} -->
         
     {% endblock content %}
 

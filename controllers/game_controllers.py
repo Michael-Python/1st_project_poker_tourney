@@ -18,7 +18,7 @@ def games():
 def show(id):
     game = game_repository.select(id)
     players = game_repository.players(game)
-    return render_template("games/show.html", games=games, players=players)
+    return render_template("games/show.html", game=game, players=players)
 
 # NEW 
 # GET games/new
@@ -38,8 +38,8 @@ def add_player():
     new_game = request.form['game_number']
     player1 = player_repository.select(new_player1)
     player2 = player_repository.select(new_player2)
-    number = game_repository.select(new_game)
-    game = Game(player1, player2, number)
+    # number = game_repository.select(new_game)
+    game = Game(new_game, player1, player2)
     game_repository.save(game)
     return redirect('/games')
 

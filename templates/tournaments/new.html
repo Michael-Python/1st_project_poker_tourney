@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/games" method="POST">
+<form action="/tournaments" method="POST">
   <div>
     <label for="game_number">Game Number:</label>
     <input type="text" id="game_number" name="game_number" placeholder="game_number" required autofocus>
   </div>
 
   <div>
-    <label for="player1">Player 1:</label>
+    <label for="winner">Player 1:</label>
     <select id="player1" name="player1">
-      {% for player in players %}
+      {% for game in games %}
         <option value="{{player.id}}">{{player.name}}</option>
       {% endfor %}
     </select>
@@ -25,7 +25,7 @@
     </select>
   </div>
 
-  <button type="submit">Add Game</button>
+  <button type="submit">Add Tournament Results</button>
 
 </form>
 

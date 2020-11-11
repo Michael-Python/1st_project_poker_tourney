@@ -31,12 +31,11 @@ def select(id):
     sql = "SELECT * FROM games where id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    print(result[0])
     if result is not None:
         player1 = player_repository.select(result['player1'])
         player2 = player_repository.select(result['player2'])
-        game = Game(result['number'], player1, player2, result['id'])
-    return result
+        game = Game(result['number'], player1.name, player2.name, result['id'])
+    return game
 
 def delete_all():
     sql = "DELETE FROM games"

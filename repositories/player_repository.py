@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.player import Player
 from models.game import Game
+import repositories.game_repository as game_repository
 
 def save(player):
     sql = "INSERT INTO players(name) VALUES (%s) RETURNING id"
@@ -26,6 +27,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
+        # game = game_repository.select(result['game'])
         player = Player(result['name'], result['id'])
     return player
 
@@ -40,7 +42,7 @@ def delete(id):
 
 def games(player):
     games = []
-    sql = "SELECT games.* FROM games INNER JOIN tournaments ON games.id = tournaments.game_id WHERE tournament.user_id = %s"
+    sql = "SELECT games.* FROM games INNER JOIN players ON (games.player1 = players.id OR games.player2 = players.id) WHERE players.id = %s"
     values = [player.id]
     results = run_sql(sql, values)
     for row in results:
