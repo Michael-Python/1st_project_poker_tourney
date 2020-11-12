@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Joe's Poker Tournament</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="link section">
+    <header>
+        <div id="page-header">
         <nav>
             <ul>
                 <li><a href="/games">Games</a> </li>
@@ -23,11 +25,14 @@
                 <li><a href="/tournaments">Tournament Standings</a></li>
             </ul>
         </nav>
+        
+        <h1>Joe's Poker Tournament</h1>
+        </div>
+    </header>
         <section id="content">
             {% block content %}
                 
             {% endblock content %}
         </section>
-    </main>
 </body>
 </html>

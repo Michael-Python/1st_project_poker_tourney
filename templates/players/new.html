@@ -2,14 +2,21 @@
 {% block content %}
 
 <form action="/players" method="post">
-  <div>
+  <div id="main-add-player">
+    
+
+  <div id="add-player-name">
     <label for="new_player">Player Name:</label>
-    <input type="text" id="new_player" name="new_player" placeholder="new_player" required autofocus>
+  </div>
+  
+  <div id="new-player-name">  
+    <input type="text" id="new_player" name="new_player" placeholder="Enter the new player name" required autofocus>
+  <button type="submit">Add Player</button></div>
+
+
   </div>
 
-
-  <button type="submit">Add Player</button>
-
+  
 </form>
 
 {% endblock %}

@@ -10,7 +10,7 @@ import repositories.player_repository as player_repository
 #create
 def save(tournament):
     sql = "INSERT INTO tournaments ( game_id, winner, loser) VALUES (%s, %s, %s) RETURNING id "
-    values = [tournament.game.id, tournament.winner.id, tournament.loser.id]
+    values = [tournament.game.number, tournament.winner.id, tournament.loser.id]
     results = run_sql(sql, values)
     tournament.id = results[0]['id']
     return tournament

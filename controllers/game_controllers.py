@@ -53,19 +53,6 @@ def edit_game(id):
     players = game_repository.players(game)
     return render_template("games/edit.html", players=players, game=game)
 
-# @games_blueprint.route("/tournaments", methods=['POST'])
-# def update_results():
-#     game_id = request.form['game_number']
-#     winner = request.form['winner']
-#     loser = request.form['loser']
-# #     new_game = request.form['game_number']
-# #     player1 = player_repository.select(new_player1)
-# #     player2 = player_repository.select(new_player2)
-# #     number = game_repository.select(new_game)
-#     tournament = Tournament(game_id, winner, loser)
-#     tournament_repository.save(tournament)
-# #     return redirect('/tournaments')
-
 # delete a game
 @games_blueprint.route("/games/<id>/delete", methods=['POST'])
 def delete_game(id):

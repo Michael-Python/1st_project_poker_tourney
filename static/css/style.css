@@ -1,0 +1,141 @@
+body > header { 
+    background-color:lightblue; 
+}
+#page-header{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 16px;
+    padding-right: 12px;
+    vertical-align: middle;
+}
+body > header > div > nav > ul > li {
+    list-style: none;
+    color: white;
+    vertical-align: middle;
+    padding-right: 50px;
+    text-align: left
+}
+body > header > div > h1 {
+    font-variant: small-caps;
+}
+#main-index{
+    
+    padding-left: 16px;
+}
+#tournament-table{    
+    display: grid;
+    width: 30%;
+    grid-template-areas: 
+      "game-title winner-title loser-title"
+      "game-number winner-name loser-name";
+    grid-template-columns: 3fr 3fr 3fr;
+}
+#game-title{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: center;
+}
+#loser-title{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+}
+#winner-title{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+}
+#main-games-table {
+    display: grid;
+    width: 30%;
+    grid-template-areas: 
+      "game-title winner-title loser-title"
+      "game-number winner-name loser-name";
+    grid-template-columns: 3fr 3fr 3fr;
+}
+#winner-name{
+    padding: 16px;
+    font-size: 20px;
+    text-align: left;
+}
+#loser-name{
+    padding: 16px;
+    font-size: 20px;
+    text-align: left;
+}
+#game-number{
+        padding: 16px;
+        font-size: 20px;
+        text-align: left;
+}
+#main-add-game {
+    display: grid;
+    width: 60%;
+    grid-template-areas: 
+      "add-game-number new-game-number"
+      "game-player-1 game-select-player-1";
+    grid-template-columns: 2fr 1fr;
+}
+#add-game-number{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+}#new-game-number{
+    text-align: left;
+}
+#game-number{
+    text-align: center;
+}
+#game-player{
+    padding: 16px;
+    font-size: 20px;
+    text-align: left;
+}
+#game-select-player{
+    text-align: left;
+    padding-right: 8px;
+}
+#main-add-player {
+    display: grid;
+    width: 25%;
+    grid-template-areas: 
+      "add-player-name new-player-name";
+    grid-template-columns: 2fr 1fr;
+}
+#add-player-name{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 18px;
+}
+#new-player-name{
+    text-align: left;
+}
+#main-player {
+    display: grid;
+    width: 25%;
+    grid-template-areas: 
+      "add-player-name new-player-name";
+    grid-template-columns: 2fr 1fr;
+}
+#player-name{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 18px;
+    padding-bottom: 18px;
+}
+#player-bin{
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 18px;
+    padding-bottom: 18px;
+}

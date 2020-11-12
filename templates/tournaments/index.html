@@ -1,39 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Joe's Poker Tournament</h1>
+    <div id="main-games-table">
+        <div id="game-title">
+            Game
+        </div>
+        <div id="winner-title">
+            Winner
+        </div>
+        <div id="loser-title">      
+            Loser
+        </div>
+        {% for tournament in tournaments %}
+        <div id="game-number">
+            {{tournament.id}}
+        </div>
+        <div id="winner-name">
+            {{tournament.winner.name}}
+        </div>
+        <div id="loser-name">
+            {{tournament.loser.name}}
+        </div>
+        {% endfor %}
+    </div>
+   
     
-    {% for tournament in tournaments %}
-            <p>Game {{tournament.id}}</a> Winner {{tournament.winner.name}} Loser {{tournament.loser.name}}</p>
-    {% endfor %}
-<!--     
-    {% for game in games %}
         
-            <h3>Game {{game.number}}</h3>
-            <ul><li>Player1: {{game.player1}}</li>
-            <li>Player2: {{game.player2}}</li>
-        
-    {% endfor %}     -->
-    <!-- <form action="/tournaments" method="post">
-        {% for game in games %}
-            {% if tournament.winner == False %}
-                <h3>Game {{game.number}}</h3>
-                <ul>
-                    <li>Player1: {{game.player1}}</li>
-                    <li>Player2: {{game.player2}}</li>
-                </ul>
-                <div>
-                    <label for="winner">Winning Player:</label>
-                    <input type="text" id="winner" name="winner" placeholder="Enter the winner, here" required autofocus>
-                </div>
-        
-                <div>
-                    <label for="loser">Losing Player:</label>
-                    <input type="text" id="loser" name="loser" placeholder="Enter the loser, here" required autofocus>
-                </div>
-            {% endif %}
-            
-        {% endfor %} -->
-        
-    {% endblock content %}
+{% endblock content %}
 

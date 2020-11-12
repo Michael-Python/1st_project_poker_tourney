@@ -1,32 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div id="main-add-game">
 <form action="/games" method="POST">
-  <div>
-    <label for="game_number">Game Number:</label>
+  <div id="add-game-number">
+    <label for="game_number">Game number: </label>
+  </div>
+  <div id="new-game-number">
     <input type="text" id="game_number" name="game_number" placeholder="Enter the game number" required autofocus>
   </div>
 
-  <div>
+  <div id="game-player">
     <label for="player1">Player 1:</label>
     <select id="player1" name="player1">
+  </div>
+  <div id="game-select-player">
       {% for player in players %}
         <option value="{{player.id}}">{{player.name}}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div>
+  <div id="game-player">
     <label for="player2">Player 2:</label>
     <select id="player2" name="player2">
+    </div>
+    <div id="game-select-player">
       {% for player in players %}
         <option value="{{player.id}}">{{player.name}}</option>
       {% endfor %}
     </select>
-  </div>
+  
 
   <button type="submit">Add Game</button>
-
+  </div>
 </form>
-
+</div>
 {% endblock %}

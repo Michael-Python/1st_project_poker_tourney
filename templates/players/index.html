@@ -1,36 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Players</h1>
-    
-        <table>
-            <tr>
-                <th>
-                    <h3>Click on a player to get more info or click the bin to delete a player.</h3>
-                </th>
-                
-            </tr>
-            {% for player in players %}
-            <tr>
-                <td>
-                    <p>
-                    <div class="player_id">
-                        <a href="/players/{{player.id}}">Player: {{player.name}}</a>
-                    </div>
-                    <div class = "buttons">
-                        <form action="/players/{{player.id}}/delete" method='POST'>
-                            <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
-                        </form>
-                    </div>
-                    </p>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td>
-                    <a href="/players/new">Add New Player</a>
+        <h3>Click on a player to get more info or click the bin to delete a player.</h3>
 
-                </td>
-            </tr>
-        </table>
+        <div id="main-player">
+            <div id="player-name">
+
+                    Player:
+            </div>
+            <div id="player-bin">  
+                Bin
+                </div>
+            {% for player in players %}
+            
+            
+                <div id="player-name">
+                    <a href="/players/{{player.id}}"> {{player.name}}</a>
+                </div>
+                <div id="player-bin">
+                    <form action="/players/{{player.id}}/delete" method='POST'>
+                        <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
+                    </form>
+                </div>
+                    
+            {% endfor %}
+            
+        <a href="/players/new">Add New Player</a>
 {% endblock %}<h1></h1>

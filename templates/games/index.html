@@ -1,41 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Games</h1>
 
     
-
-    <table>
-        <tr>
-            <th>
-                <h3>Click on a game to get more info, update to change results or the bin to delete a game.</h3>
-            </th>
-            
-        </tr>
+    <h3>Click on a game to get more info, update to change results or the bin to delete a game.</h3>
+    <div id="main-games-table">
+        <div id="game-title">Game</div>
+        <div id="winner-title">Update</div>
+        <div id="loser-title">Bin</div>
         {% for game in games %}
-        <tr>
-            <td>
-                <p>
-                <div class = "game_id">
+        
+            <div id="game-number">
                     
-                    <a href="/games/{{game.id}}">Game {{game.number}}</a>
+                <a href="/games/{{game.id}}">Game {{game.number}}</a>
                     
-                </div>
-                
-                <div class = "buttons">
-                    <form action="/tournaments"></form>
-                    <form action="/games.{{game.id}}/delete" method=@POST>
-                        <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
-                    </form>
-                </div>
-                </p>
-            </td>
-        </tr>
+            </div>
+            <div id="winner-name">
+                <a href="/games/{{game.id}}/edit">
+                    <button type="submit">Update</button>
+            </div>
+            <div id="loser-name">
+                <form action="/games/{{game.id}}/delete" method='POST'>
+                    <button class="bin"><i class="fa fa-trash-o fa-3x" style="color:black"></i></button>
+                </form>
+            </div>    
         {% endfor %}
-        <tr>
-            <td>
-                <li><a href="/games/new">Add New Game</a>
-            </td>
-        </tr>
-    </table>
+    <p><a href="/games/new">Add New Game</a></p>
 {% endblock %}<h1></h1>
